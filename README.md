@@ -1,3 +1,25 @@
+# UTS - Prediksi Gaji Karyawan (Mirna)
+
+Repository ini berisi deliverable UTS: notebook dan data untuk tugas prediksi gaji karyawan.
+
+Isi repository:
+- `UTS/UTS/utsmachinelearning.ipynb` — Notebook utama (preprocessing, training, evaluasi, prediksi).
+- `UTS/UTS/data_karyawan.csv` — Dataset historis karyawan yang digunakan.
+- `UTS/UTS/studi kasus 3.txt` — Deskripsi studi kasus.
+
+Metode singkat:
+- Model: DecisionTreeRegressor (Regression Tree) dari scikit-learn.
+- Preprocessing: imputasi median untuk `pengalaman_kerja`, label encoding untuk kategori.
+- Evaluasi: RMSE, MAE, dan R²; dibandingkan dua konfigurasi pohon (max_depth=10 & max_depth=15).
+
+Cara menjalankan:
+1. Buka `UTS/UTS/utsmachinelearning.ipynb` di Jupyter Notebook / JupyterLab.
+2. Jalankan semua cell (kernel Python 3.10+ disarankan).
+3. Gunakan fungsi `predict_gaji_karyawan_baru(...)` di dalam notebook untuk memprediksi gaji calon karyawan.
+
+Catatan:
+- Repositori ini telah dibersihkan sehingga hanya berisi konten UTS dan README.
+- Jika Anda ingin README dipindah ke dalam folder `UTS/` atau menambahkan nilai metrik yang tercetak di notebook, beritahu saya.
 # 📚 Machine Learning — Semester 6
 
 Repositori ini berisi kumpulan tugas mata kuliah **Machine Learning** selama **Semester 6**.
