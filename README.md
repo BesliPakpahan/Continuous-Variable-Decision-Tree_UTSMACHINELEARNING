@@ -1,26 +1,71 @@
-# UTS - Prediksi Gaji Karyawan (Mirna)
+# UTS Machine Learning
 
-Dokumentasi singkat untuk deliverable UTS: model prediksi gaji berbasis Regression Tree.
+## Prediksi Gaji Karyawan Menggunakan Regression Tree
 
-## Ringkasan
-- Tujuan: Membantu Mirna memprediksi gaji calon karyawan berdasarkan data historis.
-- Dataset: `UTS/UTS/data_karyawan.csv` (fitur: usia, pengalaman_kerja, jenis_kelamin, pendidikan, gaji).
+Repository ini berisi deliverable UTS untuk studi kasus prediksi gaji karyawan (Mirna) menggunakan pendekatan machine learning berbasis **Continuous Variable Decision Tree**.
 
-## Metode
-- Model utama: DecisionTreeRegressor (Regression Tree) dari scikit-learn.
-- Preprocessing: imputasi nilai hilang pada `pengalaman_kerja` (median); label encoding untuk `jenis_kelamin` dan `pendidikan`.
-- Evaluasi: RMSE, MAE, dan R² pada testing set; dibandingkan dua kedalaman pohon (max_depth=10 dan max_depth=15).
+## Latar Belakang
+Mirna sebagai pemilik startup membutuhkan pendekatan yang konsisten untuk:
+1. Menentukan gaji calon karyawan secara adil dan kompetitif.
+2. Memahami faktor-faktor yang paling memengaruhi besaran gaji.
 
-## Hasil singkat
-- Model terbaik dipilih berdasarkan R² pada testing set (dicetak di notebook).
-- Feature importance diekstrak dari model; biasanya usia dan pengalaman kerja muncul sebagai kontributor utama.
+Masalah ini dimodelkan sebagai **regresi** karena target yang diprediksi adalah nilai kontinu (`gaji`).
 
-## Cara pakai
-1. Buka notebook `UTS/UTS/utsmachinelearning.ipynb` dan jalankan semua cell (kernel Python 3.10+).
-2. Gunakan fungsi `predict_gaji_karyawan_baru(usia, pengalaman, jenis_kelamin, pendidikan)` di dalam notebook untuk memprediksi gaji baru.
+## Dataset
+- Sumber data: `data_karyawan.csv`
+- Jumlah fitur utama:
+	- `usia`
+	- `pengalaman_kerja`
+	- `jenis_kelamin`
+	- `pendidikan`
+- Target:
+	- `gaji`
 
-## Catatan
-- File yang relevan: `UTS/UTS/utsmachinelearning.ipynb`, `UTS/UTS/data_karyawan.csv`, `UTS/UTS/studi kasus 3.txt`.
-- Folder laporan mingguan telah dihapus dari repository agar repositori berfokus pada deliverable UTS.
+## Metodologi
+Pipeline yang digunakan pada notebook `utsmachinelearning.ipynb`:
 
-Jika Anda ingin README ditempatkan di dalam folder `UTS/` atau ingin menambahkan detail hasil (nilai R², RMSE), beri tahu saya dan saya akan perbarui.
+1. Data loading dan eksplorasi awal.
+2. Data preprocessing:
+	 - Imputasi nilai hilang pada `pengalaman_kerja` dengan median.
+	 - Encoding fitur kategorikal (`jenis_kelamin`, `pendidikan`) ke bentuk numerik.
+3. Train-test split (80:20).
+4. Pelatihan dua model `DecisionTreeRegressor`:
+	 - Model A: `max_depth=10`
+	 - Model B: `max_depth=15`
+5. Evaluasi model menggunakan metrik regresi.
+6. Analisis feature importance untuk interpretasi faktor penentu gaji.
+
+## Metrik Evaluasi
+Karena studi kasus ini adalah **regresi**, evaluasi menggunakan:
+- **MSE** (Mean Squared Error)
+- **RMSE** (Root Mean Squared Error)
+- **MAE** (Mean Absolute Error)
+- **R2 Score**
+
+Catatan: **Confusion matrix tidak digunakan** pada studi kasus ini karena confusion matrix adalah metrik untuk klasifikasi.
+
+## Hasil dan Insight Utama
+- Model terbaik dipilih berdasarkan performa pada data uji (terutama nilai R2 dan error yang lebih rendah).
+- Analisis feature importance menunjukkan faktor yang paling berkontribusi terhadap prediksi gaji.
+- Model dapat digunakan sebagai baseline objektif untuk rekomendasi gaji kandidat baru.
+
+## Struktur File
+- `utsmachinelearning.ipynb` -> notebook utama (end-to-end workflow)
+- `data_karyawan.csv` -> dataset historis karyawan
+- `studi kasus 3.txt` -> deskripsi studi kasus UTS
+- `README.md` dan `README_UTS.md` -> dokumentasi proyek
+
+## Cara Menjalankan
+1. Buka `utsmachinelearning.ipynb` di Jupyter Notebook / JupyterLab / VS Code.
+2. Pastikan environment Python telah terpasang library: `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`.
+3. Jalankan seluruh cell secara berurutan dari awal hingga akhir.
+4. Gunakan fungsi `predict_gaji_karyawan_baru(...)` untuk simulasi prediksi kandidat baru.
+
+## Batasan dan Saran Pengembangan
+- Model belum memasukkan faktor eksternal seperti jabatan, performa, dan keahlian khusus.
+- Validasi silang (cross-validation) dan hyperparameter tuning lanjutan dapat meningkatkan stabilitas model.
+- Prediksi sebaiknya digunakan sebagai **pendukung keputusan**, bukan satu-satunya penentu nilai gaji.
+
+## Penulis
+Besli Saut Marito Pakpahan
+
