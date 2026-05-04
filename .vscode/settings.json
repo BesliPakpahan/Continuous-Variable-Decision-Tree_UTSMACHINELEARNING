@@ -1,0 +1,12 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^ls /home/bes/Music/SEMS6/MACHINELEARNING/WEEK2/ && python3 -c \"\nimport pandas as pd\ndf = pd\\.read_csv\\('/home/bes/Music/SEMS6/MACHINELEARNING/WEEK2/company\\.csv'\\)\nprint\\('Company columns:', df\\.columns\\.tolist\\(\\)\\)\nprint\\('Missing in Headquarters:', df\\['Headquarters'\\]\\.isna\\(\\)\\.sum\\(\\)\\)\nprint\\('Total rows:', len\\(df\\)\\)\nprint\\('Missing %:', df\\['Headquarters'\\]\\.isna\\(\\)\\.sum\\(\\)/len\\(df\\)\\*100\\)\nprint\\('Dtype:', df\\['Headquarters'\\]\\.dtype\\)\n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^python3 -c \"\nimport pandas as pd\ndf = pd\\.read_csv\\('/home/bes/Music/SEMS6/MACHINELEARNING/WEEK2/company\\.csv'\\)\nprint\\('Headquarters value counts \\(first 20\\):'\\)\nprint\\(df\\['Headquarters'\\]\\.value_counts\\(\\)\\.head\\(20\\)\\)\nprint\\(\\)\nprint\\('Check for unknown/non-applicable:'\\)\nprint\\(df\\[df\\['Headquarters'\\]\\.str\\.contains\\('Unknown\\|None\\|N/A\\|NaN\\|unknown', na=True\\)\\]\\.shape\\)\nprint\\(\\)\nprint\\('Sample unusual values:'\\)\nprint\\(df\\['Headquarters'\\]\\.unique\\(\\)\\[:10\\]\\)\n\" 2>&1$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
